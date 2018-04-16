@@ -9,7 +9,8 @@ while (true) {
     for(2 => int i; i < me.args(); i++ )
     {
         Std.atoi(me.arg(i)) => int value;
-        (1::ms  * time_multiplier) / value => now;
+        //(1::ms  * time_multiplier) / value => now;
+        100::ms => now;
         value * freq_multiplier => s.freq;
     }
     //for( me.args() => int i; i >= 2; i-- )

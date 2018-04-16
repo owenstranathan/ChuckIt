@@ -1,4 +1,3 @@
-import pdb
 import sys
 import subprocess
 
@@ -9,15 +8,19 @@ sentence = sys.argv[3]
 
 sentence = sentence.lower().translate(None, ' ')
 
-l = [str(ord(c) - 96) for c in sentence]
+ls = []
+for c in sentence:
+    if ord(c) < 97 or ord(c) > 122:
+        continue
+    ls.append(str(ord(c) - 96))
 
 
-args = ":".join(l)
+args = ":".join(ls)
 
-cmd = "chuck play_some_numbers:{}:{}:{}".format(time,freq, args)
+cmd = "chuck play_some_numbers:{}:{}:{}".format(time, freq, args)
 print cmd
 proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
-                 stderr=subprocess.STDOUT, universal_newlines=True)
+                        stderr=subprocess.STDOUT, universal_newlines=True)
 
 output = proc.communicate()
 retcode = proc.poll()
