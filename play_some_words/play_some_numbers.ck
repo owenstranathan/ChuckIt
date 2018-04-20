@@ -1,5 +1,5 @@
 
-SinOsc s => dac;
+Phasor s => dac;
 
 
 Std.atoi(me.arg(0)) => int time_multiplier;
@@ -10,8 +10,8 @@ while (true) {
     {
         Std.atoi(me.arg(i)) => int value;
         //(1::ms  * time_multiplier) / value => now;
-        100::ms => now;
         value * freq_multiplier => s.freq;
+        100::ms => now;
     }
     //for( me.args() => int i; i >= 2; i-- )
     //{

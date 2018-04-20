@@ -1,5 +1,5 @@
 
-SinOsc s => dac;
+SqrOsc s => dac;
 
 while (true) {
     for(int i; i < me.args(); i++ )
