@@ -1,4 +1,5 @@
 import sys
+import signal
 import subprocess
 
 
@@ -25,6 +26,8 @@ proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
 output = proc.communicate()
 retcode = proc.poll()
 
-print output
-print retcode
-
+def exit_gracefully(signum, frame):
+    sys.exit(0)
+    
+signal.signal(signal.SIGINT, exit_gracefully)
+signal.signal(signal.SIGTERM, exit_gracefully)
